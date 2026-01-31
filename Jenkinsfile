@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven_3'
+    }
+
     stages {
 
         stage('Build') {
@@ -9,7 +13,7 @@ pipeline {
             }
             steps {
                 echo 'Running full CI pipeline on main branch'
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
 
@@ -22,7 +26,7 @@ pipeline {
             }
             steps {
                 echo 'Running tests'
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
